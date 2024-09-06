@@ -1,12 +1,20 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
 
 body {
-    background-image: url('background03.jpg'); 
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    transition: background-color 0.5s ease, background-image 0.5s ease; 
+    flex-direction: column;
+    font-family: "Roboto", sans-serif;
+    background-image: url('background03.jpg');
+    background-size: cover;
+    background-position: center;
+    transition: background 0.4s;
+}
+
+body.dark {
+    background: linear-gradient(to bottom, #000000, #1a2b3c);
 }
 
 .container {
@@ -14,37 +22,34 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 100%; 
-}
-
-.column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 50%;
+    margin: auto;
 }
 
 .hexagon {
-    width: 50px; 
-    height: 50px; 
-    background-color: rgba(151, 149, 145, 0.7); 
-    backdrop-filter: blur(5px); 
+    width: 40px;
+    height: 40px;
+    background-color: rgba(155, 109, 63, 0.7);
+    backdrop-filter: blur(5px);
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 5px; 
+    margin: 10px;
     transition: background-color 0.3s, transform 0.3s;
     font-size: 1.2rem;
-    border-radius: 5px; 
+    border-radius: 5px;
 }
 
 
-.hexagon:hover,
-.hexagon:focus {
-    background-color: rgba(255, 255, 255, 0.5); 
-    border: 2px solid rgba(151, 149, 145, 0.9); 
-    outline: none; 
+.hexagon:focus,
+.hexagon:hover {
+    background-color: #d7d3e3;
+    border: 2px solid rgba(151, 149, 145, 1);
+    outline: none;
+    transform: scale(1.5);
 }
+
 
 .waves {
     animation: wave 1s infinite;
@@ -53,7 +58,6 @@ body {
 @keyframes wave {
     0% { transform: translateY(0); }
     50% { transform: translateY(-5px); }
-    100% { transform: translateY(0); }
 }
 
 /* Switch butonu stili */
@@ -65,11 +69,10 @@ body {
     height: 2rem;
     display: flex;
     align-items: center;
-    justify-content: flex-start; 
-    cursor: pointer; 
+    justify-content: flex-start;
+    cursor: pointer;
 }
 
-/* Slider stili */
 .slider {
     position: absolute;
     cursor: pointer;
@@ -108,7 +111,6 @@ body {
         inset -10px -4px 0 0 #a3dafb;
 }
 
-/* Dairesel kutu stili */
 .toggle {
     width: 1.4rem;
     height: 1.4rem; 
@@ -117,16 +119,19 @@ body {
     transition: transform 0.4s ease; 
 }
 
-/* Dairesel kutunun konumu */
 .switch.active .toggle {
-    transform: translateX(1.5rem);
+    transform: translateX(1.5rem); 
 }
 
-/* Responsive ayarlar */
+/* Hexagonların iç rengi switch aktif olduğunda değişecek */
+body.dark .hexagon {
+    background-color: rgba(155, 109, 63, 0.5); /* Switch on olduğunda transparan renk */
+}
+
 @media (max-width: 768px) {
     .hexagon {
-        width: 40px;
-        height: 40px; 
+        width: 30px; 
+        height: 30px; 
         font-size: 1rem; 
     }
 }
